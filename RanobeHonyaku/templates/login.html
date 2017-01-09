@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block main %}
+<form action="/login" method="post">
+    <div class="box">
+        <p class="control has-icon">
+            <input class="input" type="text" placeholder="Username" name="username">
+            <i class="fa fa-user"></i>
+        </p>
+        <p class="control has-icon">
+            <input class="input" type="email" placeholder="Email" name="email">
+            <i class="fa fa-envelope"></i>
+        </p>
+        <p class="control has-icon">
+            <input class="input" type="password" placeholder="Password" name="password">
+            <i class="fa fa-lock"></i>
+        </p>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <article class="message-is-danger">
+                    <div class="message-header">
+                        Error!
+                    </div>
+                    <div class="message-body">
+                        {{ message }}
+                    </div>
+                </article>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock main %}
