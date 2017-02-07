@@ -1,20 +1,17 @@
-from flask import render_template
-
-
 def error_404_not_found(e):
-    return render_template("error.html", error=e)
+    return
 
 
 def error_401_unauthorized(e):
-    return render_template("error.html", error=e)
+    return
 
 
 def error_500_server_error(e):
-    return render_template("error.html", error=e)
+    return
 
 
 def error_403_forbidden(e):
-    return render_template("error.html", error=e)
+    return
 
 
 handlers = {

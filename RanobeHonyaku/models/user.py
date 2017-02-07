@@ -1,7 +1,4 @@
-from passlib.hash import scrypt
-
 from RanobeHonyaku.database import db
-from RanobeHonyaku.errors import InvalidCredentials
 
 user_projects = db.Table(
     "user_projects",
@@ -37,11 +34,3 @@ class User(db.Model):
 
     def __repr__(self):
         return "<User ({0.username}) ({0.email}) ({0.id})>".format(self)
-
-    def encrypt_pass(self, password):
-        self.password = scrypt.hash(password)  # This salts and hashes
-
-    def verify_pass(self, password):
-        if not scrypt.verify(password, self.password):
-            raise InvalidCredentials
-        return True

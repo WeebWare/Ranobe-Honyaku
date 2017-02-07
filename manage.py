@@ -5,7 +5,6 @@ from flask_script import Manager
 from RanobeHonyaku import app
 from RanobeHonyaku.database import db
 from RanobeHonyaku.models.user import User
-from RanobeHonyaku.models.application import Application
 
 manager = Manager(app)
 migrate = Migrate(app, db)
@@ -25,7 +24,7 @@ def setup():
 
 
 @manager.command
-def create_users():
+def create_admin_user():
     with app.app_context():
         db.session.add(
             User(
@@ -33,15 +32,6 @@ def create_users():
                 username="",
                 password="",
                 avatar=None,
-            )
-        )
-        db.session.add(
-            Application(
-                name="",
-                url="",
-                source="",
-                owner_id=1,
-                description=""
             )
         )
         db.session.commit()

@@ -13,29 +13,27 @@ from RanobeHonyaku.database import db
 from RanobeHonyaku.models import User
 from RanobeHonyaku.utils import CONFIG
 from RanobeHonyaku.errors import InvalidCredentials
-from RanobeHonyaku.models import Application, Series
 from RanobeHonyaku.utils.decorators import anon_only, login_required
+from RanobeHonyaku.utils.security import encrypt_password, validate_password
 
 
 @app.before_request
 def before_request():
-    # We load this into our global so we don't have to pass CONFIG to every template.
     g.CONFIG = CONFIG
     try:
-        # Because without actual users we might as well do nothing.
-        g.user = User.query.filter_by(id=session["user_id"]).first()
+        g.user = User.query.get(session["user_id"])
     except KeyError:
         g.user = None
 
 
 @app.route("/")
 def index():
-    return render_template("home.html")
+    return
 
 
 @app.route("/applications")
 def applications():
-    return render_template("applications.html", applications=Application.query.order_by(Application.name).all())
+    return
 
 
 @app.route("/api")
@@ -45,19 +43,19 @@ def redirect_to_github():
 
 @app.route("/main-projects")
 def main():
-    return render_template("projects.html", series=[])
+    return
 
 
 @app.route("/teaser-projects")
 def teasers():
-    return render_template("projects.html", series=Series.query.filter_by())
+    return
 
 
 @app.route("/login", methods=["GET", "POST"])
 @anon_only
 def login():
     if request.method == "GET":
-        return render_template("login.html")
+        return
     else:
         r = request.form
         # Get our users object
@@ -67,10 +65,10 @@ def login():
             return redirect("login")
         try:
             # Try match their password to their user
-            user.verify_pass(r["password"])
+            validate_password(r["password"], user.password)
         except InvalidCredentials:
             # If it fails we redirect them to login to have them try again
-            flash("Incorrect password.")
+            flash("Your username/email or password are incorrect.")
             return redirect("login")
         # If it doesn't fail we set the user this session
         session["user_id"] = user.id
@@ -90,7 +88,7 @@ def logout():
 @anon_only
 def register():
     if request.method == "GET":
-        return render_template("register.html")
+        return
     else:
         r = request.form
         # Checks if the username or email is taken
@@ -98,9 +96,7 @@ def register():
             flash("Desired username/email is already registered!")
             return redirect("register")
         # Create the User object
-        user = User(email=r["email"], username=r["username"])
-        # Encrypt their password
-        user.encrypt_pass(password=r["password"])
+        user = User(email=r["email"], username=r["username"], password=encrypt_password(r["password"]))
         # If we haven't redirected them back to register, we add it to the database and commit
         db.session.add(user)
         db.session.commit()

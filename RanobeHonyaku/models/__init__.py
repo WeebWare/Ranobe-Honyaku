@@ -1,9 +1,9 @@
-from RanobeHonyaku.models.user import *
-from RanobeHonyaku.models.role import *
-from RanobeHonyaku.models.part import *
-from RanobeHonyaku.models.series import *
-from RanobeHonyaku.models.author import *
-from RanobeHonyaku.models.volume import *
-from RanobeHonyaku.models.chapter import *
-from RanobeHonyaku.models.application import *
-from RanobeHonyaku.models.illustrator import *
+from RanobeHonyaku.models.user import User  # noqa
+from RanobeHonyaku.models.role import Role  # noqa
+from RanobeHonyaku.models.part import Part  # noqa
+from RanobeHonyaku.models.series import Series  # noqa
+from RanobeHonyaku.models.author import Author  # noqa
+from RanobeHonyaku.models.volume import Volume  # noqa
+from RanobeHonyaku.models.chapter import Chapter  # noqa
+from RanobeHonyaku.models.application import Application  # noqa
+from RanobeHonyaku.models.illustrator import Illustrator  # noqa
