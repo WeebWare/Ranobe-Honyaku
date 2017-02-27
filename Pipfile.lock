@@ -8,14 +8,16 @@
         ],
         "requires": {},
         "hash": {
-            "sha256": "c29c090de61e4eb67fbc74a4ef286fce4aeb1adfc12eb467bce21ae509ee0ade"
+            "sha256": "0ec6d5d4bc82da310ed18071fcc372c7a05f92890878235b5a41f9d7048684e5"
         }
     },
     "default": {
         "alembic": "0.8.9",
+        "aniso8601": "1.2.0",
         "click": "6.6",
         "flask": "0.11.1",
         "flask-migrate": "2.0.1",
+        "flask-restful": "0.3.5",
         "flask-script": "2.0.5",
         "flask-sqlalchemy": "2.1",
         "itsdangerous": "0.24",
@@ -24,7 +26,10 @@
         "markupsafe": "0.23",
         "passlib": "1.7.0",
         "psycopg2": "2.6.2",
+        "pyparsing": "2.1.10",
+        "python-dateutil": "2.6.0",
         "python-editor": "1.0.3",
+        "pytz": "2016.10",
         "scrypt": "0.8.0",
         "sqlalchemy": "1.1.4",
         "ujson": "1.35",

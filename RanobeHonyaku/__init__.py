@@ -4,7 +4,7 @@ from flask_migrate import Migrate
 from RanobeHonyaku.database import db
 from RanobeHonyaku.admin import admin
 from RanobeHonyaku.utils import CONFIG
-from RanobeHonyaku.api.v1 import api_v1
+# from RanobeHonyaku.api.v1 import api_v1
 
 app = Flask("RanobeHonyaku")
 
@@ -20,7 +20,7 @@ db.init_app(app)
 Migrate(app, db)
 
 # Registering the applications blueprints
-app.register_blueprint(api_v1)
+# app.register_blueprint(api_v1)
 app.register_blueprint(admin)
 
 # Technically a circular import, but this design pattern is recommended by flask docs
