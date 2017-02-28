@@ -26,14 +26,14 @@ Any pull requests not filling in all relevant information will be closed.
 
 
 ## Make sure these are ticked!
-- [] Included tests
-- [] Written documentation
-- [] EditorConfig compatible IDE/Text Editor or Plugin used
-- [] Flake8 Linter has been used
+- [ ] Included tests
+- [ ] Written documentation
+- [ ] EditorConfig compatible IDE/Text Editor or Plugin used
+- [ ] Flake8 Linter has been used
 
 ## Release Type
-- [] Major
-- [] Minor
+- [ ] Major
+- [ ] Minor
 - [X] Patch
 
 <!-- Versioning is done with Semantic versioning (see http://semver.org/spec/v2.0.0.html) -->
