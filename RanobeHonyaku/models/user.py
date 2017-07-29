@@ -29,8 +29,7 @@ class User(db.Model):
     # Projects that the user is on
     projects = db.relationship("Series", secondary=user_projects,  backref=db.backref("series", lazy="dynamic"))
 
-    # The users roles
-    # roles = db.relationship("Role", backref="users", lazy="dynamic")
+    role = db.Column(db.String(24), nullable=False)
 
     def __repr__(self):
         return "<User ({0.username}) ({0.email}) ({0.id})>".format(self)
